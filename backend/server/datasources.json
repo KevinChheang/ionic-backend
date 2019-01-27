@@ -1,0 +1,1 @@
+{"db":{"name":"db","connector":"memory"},"mongo":{"host":"","port":0,"url":"mongodb://Admin:Leksomghat1@ds211724.mlab.com:11724/ionic-backend","database":"ionic-backend","password":"Leksomghat1","name":"mongo","user":"Admin","connector":"mongodb"}}

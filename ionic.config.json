@@ -1,5 +1,7 @@
 {
   "name": "speakingApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

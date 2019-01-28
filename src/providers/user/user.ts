@@ -10,4 +10,12 @@ export class UserProvider {
   registerUser(user) {
     return this.http.post(this.baseUrl, user);
   }
+
+  loginUser() {
+
+  }
+
+  logoutUser() {
+    
+  }
 }

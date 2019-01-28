@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserProvider } from '../../providers/user/user'
+
+import { UserProvider } from '../../providers/user/user';
+import { DashboardPage } from '../dashboard/dashboard';
+
 
 @Component({
   selector: 'page-register',
@@ -29,6 +32,7 @@ export class RegisterPage {
       console.log(res);
       window.sessionStorage.setItem('token', res.token);
       window.sessionStorage.setItem('userId', res.userId);
+      this.navCtrl.push(DashboardPage);
     }, (err) => {
       console.log("Error ocurred!");
     });

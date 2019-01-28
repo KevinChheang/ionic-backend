@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Create a new account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <input [(ngModel)]="user.firstName" type="text" placeholder="First name"> <br>
+    <input [(ngModel)]="user.lastName" type="text" placeholder="Last name"> <br>
+    <input [(ngModel)]="user.email" type="text" placeholder="Email"> <br>
+    <input [(ngModel)]="user.password" type="password" placeholder="Password"> <br>
+    <button (click)="onRegisterUser()" id="registerBtn">Log in</button>
+</ion-content>

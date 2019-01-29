@@ -12,10 +12,10 @@ export class UserProvider {
   }
 
   loginUser(user) {
-      return this.http.post(this.baseUrl + "login", user);
+    return this.http.post(this.baseUrl + "login", user);
   }
 
-  logoutUser() {
-
+  logoutUser(token) {
+    return this.http.post(this.baseUrl + "logout?access_token=" + token, {});
   }
 }

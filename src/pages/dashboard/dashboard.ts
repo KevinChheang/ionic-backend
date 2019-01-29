@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { UserProvider } from '../../providers/user/user';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-dashboard',
@@ -12,7 +14,8 @@ export class DashboardPage {
   speedRate: number;
   language: string = "en-gb";
 
-  constructor(public navCtrl: NavController, public tts: TextToSpeech) {
+  constructor(public navCtrl: NavController, public tts: TextToSpeech, 
+    public _user: UserProvider) {
     
   }
 
@@ -29,6 +32,17 @@ export class DashboardPage {
     });
     console.log(this.language);
     console.log(this.speedRate);
+  }
+
+  onLogoutUser() {
+    this._user.logoutUser(window.sessionStorage.token)
+    .subscribe((res: any) => {
+      console.log("Logout successful");
+      window.sessionStorage.clear();
+      this.navCtrl.push(LoginPage);
+    }, (err) => {
+      console.log("Logout failed");
+    })
   }
   
   ionViewDidLoad() {

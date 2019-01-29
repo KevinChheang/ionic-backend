@@ -4,6 +4,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+
+import { UserProvider } from '../providers/user/user';
+
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -11,7 +15,6 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -33,10 +36,11 @@ import { UserProvider } from '../providers/user/user';
     DashboardPage
   ],
   providers: [
+    UserProvider,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    TextToSpeech
   ]
 })
 export class AppModule {}

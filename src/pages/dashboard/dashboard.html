@@ -1,20 +1,21 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
-        Text to speech
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content padding>
-    <ion-list>
-      <ion-grid>
+  <ion-navbar>
+    <ion-title>
+      Text to speech
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-grid>
         <ion-row justify-content-center>
           <ion-col col-auto>
-            <input id="textBox" [(ngModel)]="text" type="text" placeholder="Type your text here">
+            <input id="textBox" color=primary [(ngModel)]="text" inputmode="text" size="33" placeholder="Type your text here">
+            <!-- </ion-input> -->
           </ion-col>
         </ion-row>
-  
+
         <ion-row>
             <ion-col>
               <ion-item>
@@ -22,10 +23,7 @@
                 <ion-select [(ngModel)]="language">
                   <ion-option value="en-nz">English NZ</ion-option>
                   <ion-option value="en-us">English US</ion-option>
-                  <ion-option value="de">German</ion-option>
-                  <ion-option value="fr">French</ion-option>
-                  <ion-option value="	mi">Maori</ion-option>
-                  <ion-option value="	ja">Japanese</ion-option>
+                  <ion-option value="en-gb">English British</ion-option>
                 </ion-select>
               </ion-item>
             </ion-col>
@@ -33,7 +31,7 @@
   
           <ion-row>
               <ion-col>
-                <ion-range min="1" max="10" step="1" pin="true" color="secondary" [(ngModel)]="speedRate">
+                <ion-range min="1" max="30" step="1" color="secondary" [(ngModel)]="speedRate">
                   <ion-icon range-left name="ios-remove"></ion-icon>
                   <ion-icon range-right name="ios-add"></ion-icon>
                 </ion-range>
@@ -45,8 +43,6 @@
                 <button ion-button (click)="speak()">Speak</button>
             </ion-col>
           </ion-row>
-      </ion-grid>
-    </ion-list>
-    
-  </ion-content>
-  
+    </ion-grid>
+  </ion-list>
+</ion-content>

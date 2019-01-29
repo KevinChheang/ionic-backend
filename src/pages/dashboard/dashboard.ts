@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { TextToSpeechOriginal } from '@ionic-native/text-to-speech';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 @Component({
   selector: 'page-dashboard',
@@ -12,20 +12,26 @@ export class DashboardPage {
   speedRate: number;
   language: string = "en-gb";
 
-  tts: TextToSpeechOriginal;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public tts: TextToSpeech) {
+    
   }
 
   speak() {
-    this.tts.speak({text: this.text, locale: this.language, rate: this.speedRate/10})
+    this.tts.speak({
+      text: this.text, 
+      locale: this.language, 
+      rate: this.speedRate / 10
+    })
     .then(() => console.log("Success"))
-    .catch((reason: any) => console.log(reason));
+    .catch((reason: any) => {
+      console.log(reason)
+      alert("Speech isn't working.")
+    });
     console.log(this.language);
     console.log(this.speedRate);
   }
-
+  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
   }
 
 }

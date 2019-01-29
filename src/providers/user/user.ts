@@ -11,11 +11,11 @@ export class UserProvider {
     return this.http.post(this.baseUrl, user);
   }
 
-  loginUser() {
-
+  loginUser(user) {
+      return this.http.post(this.baseUrl + "login", user);
   }
 
   logoutUser() {
-    
+
   }
 }

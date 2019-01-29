@@ -8,7 +8,23 @@
 </ion-header>
 
 <ion-content padding>
-  <input type="text" placeholder="Username"> <br>
-  <input type="password" placeholder="Password"> <br>
-  <button id="loginBtn">Log in</button>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col col-auto>
+        <input [(ngModel)]="user.email" type="text" size="33" placeholder="Email">
+      </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-center>
+      <ion-col col-auto>
+        <input [(ngModel)]="user.password" type="password" size="33" placeholder="Password">
+      </ion-col>
+    </ion-row>
+
+    <ion-row justify-content-center>
+      <ion-col col-auto>
+        <button ion-button (click)="onLoginUser()">Log in</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

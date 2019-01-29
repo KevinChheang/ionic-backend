@@ -21,12 +21,12 @@ export class RegisterPage {
     password: ""
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public _api: UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public _user: UserProvider) {
     
   }
 
   onRegisterUser() {
-    this._api.registerUser(this.user)
+    this._user.registerUser(this.user)
     .subscribe((res: any) => {
       console.log("Register successful")
       console.log(res);
@@ -34,7 +34,8 @@ export class RegisterPage {
       window.sessionStorage.setItem('userId', res.userId);
       this.navCtrl.push(DashboardPage);
     }, (err) => {
-      console.log("Error ocurred!");
+      console.log(err);
+      alert("Register failed.")
     });
   }
 }

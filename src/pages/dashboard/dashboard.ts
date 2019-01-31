@@ -10,8 +10,11 @@ import { LoginPage } from '../login/login';
   templateUrl: 'dashboard.html',
 })
 export class DashboardPage {
-  text: string = "";
-  speedRate: number;
+  speechArr = [];
+  text: any = {
+    speech: ""
+  };
+  speedRate: number = 1;
   language: string = "en-gb";
 
   constructor(public navCtrl: NavController, public tts: TextToSpeech, 
@@ -21,7 +24,7 @@ export class DashboardPage {
 
   speak() {
     this.tts.speak({
-      text: this.text, 
+      text: this.text.speech, 
       locale: this.language, 
       rate: this.speedRate / 10
     })
@@ -30,8 +33,8 @@ export class DashboardPage {
       console.log(reason)
       alert("Speech isn't working.")
     });
-    console.log(this.language);
-    console.log(this.speedRate);
+    // console.log(this.language);
+    // console.log(this.speedRate);
   }
 
   onLogoutUser() {
@@ -43,6 +46,33 @@ export class DashboardPage {
     }, (err) => {
       console.log("Logout failed");
     })
+  }
+
+  onSaveSpeech() {
+    this._user.saveSpeech(window.sessionStorage.userId, window.sessionStorage.token, this.text)
+    .subscribe((res: any) => {
+      console.log("Speech saved successfully.")
+      console.log(this.text);
+      console.log(res["speech"]);
+      this.onGetSpeech();
+    }, (err) => {
+      console.log(err);
+      alert("Save speech failed.")
+    });
+  }
+
+  onGetSpeech() {
+    this._user.getSpeech(window.sessionStorage.userId, window.sessionStorage.token)
+    .subscribe((res: any) => {
+      console.log("Get speech successfully");
+      console.log(res);
+      this.speechArr = [];
+      for(let i = 0; i < res.length; i++) {
+        this.speechArr.push(res[i]["speech"]);
+      }
+    }, (err) => {
+      alert("Can't retrieve speech.")
+    });
   }
   
   ionViewDidLoad() {

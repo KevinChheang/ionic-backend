@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import { UserProvider } from '../providers/user/user';
+import { SpeechProvider } from '../providers/speech/speech';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -40,7 +41,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    TextToSpeech
+    TextToSpeech,
+    SpeechProvider
   ]
 })
 export class AppModule {}

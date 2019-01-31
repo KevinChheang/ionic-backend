@@ -32,10 +32,22 @@ export class RegisterPage {
       console.log(res);
       window.sessionStorage.setItem('token', res.token);
       window.sessionStorage.setItem('userId', res.userId);
+      this._user.onGetUserInfo();
       this.navCtrl.push(DashboardPage);
     }, (err) => {
       console.log(err);
       alert("Register failed.")
     });
   }
+
+  // onGetUserInfo() {
+  //   this._user.getUserInfo(window.sessionStorage.token)
+  //   .subscribe((res: any) => {
+  //     console.log("User info");
+  //     console.log(res);
+  //   }, (err) => {
+  //     console.log("Can't get user info");
+  //     console.log(err);
+  //   });
+  // }
 }

@@ -1,11 +1,17 @@
 <ion-header>
-  <ion-navbar>
+  <!-- <ion-navbar> -->
     <ion-grid>
-      <ion-row>
+      <ion-row justify-content-center>
         <ion-col>
           <ion-title>
             Text to speech
           </ion-title>
+        </ion-col>
+
+        <ion-col>
+            <ion-title>
+              Welcome {{_user.userFirstName}}
+            </ion-title>
         </ion-col>
 
         <ion-col col-auto>
@@ -15,7 +21,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-navbar>
+  <!-- </ion-navbar> -->
 </ion-header>
 
 <ion-content padding>
@@ -23,8 +29,7 @@
     <ion-grid>
         <ion-row justify-content-center>
           <ion-col col-auto>
-            <input id="textBox" color=primary [(ngModel)]="text" inputmode="text" size="33" placeholder="Type your text here">
-            <!-- </ion-input> -->
+            <input id="textBox" color=primary [(ngModel)]="text.speech" type="text" size="33" placeholder="Type your text here">
           </ion-col>
         </ion-row>
 
@@ -53,6 +58,15 @@
           <ion-row justify-content-center>
             <ion-col col-auto>
                 <button ion-button (click)="speak()">Speak</button>
+                <button ion-button (click)="onSaveSpeech()">Save speech</button>
+                <!-- <button ion-button (click)="onGetSpeech()">Get speech</button> -->
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center *ngIf="speechArr">
+            <ion-col col-auto>
+              <h5>My speeches</h5>
+              <h6 *ngFor="let speech of speechArr">{{speech}}</h6>
             </ion-col>
           </ion-row>
     </ion-grid>

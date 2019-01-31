@@ -21,6 +21,7 @@ export class LoginPage {
       console.log("Login is successful", res);
       window.sessionStorage.setItem("token", res.token);
       window.sessionStorage.setItem("userId", res.userId);
+      this._user.onGetUserInfo();
       this.navCtrl.push(DashboardPage);
     }, (err) => {
       console.log(err);

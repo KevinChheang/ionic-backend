@@ -1,0 +1,1 @@
+{"name":"speech","plural":"speeches","base":"PersistedModel","idInjection":true,"options":{"validateUpsert":true},"properties":{"speech":{"type":"string"}},"validations":[],"relations":{},"acls":[],"methods":{}}
